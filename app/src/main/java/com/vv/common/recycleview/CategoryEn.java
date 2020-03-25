@@ -15,16 +15,20 @@ package com.vv.common.recycleview;
  */
 public class CategoryEn {
     public String title = "";
-    public String subTitle = "";
+    public String[] subTitle = {"", ""};
     public String icon = "";
     public boolean isFocus = false;
+    /**
+     * 是否已经翻转
+     */
+    public boolean isFLip = false;
     public int type = TYPE_BIG;
 
     public static final int TYPE_BIG = 0;
     public static final int TYPE_SMALL = 1;
 
 
-    public CategoryEn(String title, String subTitle, int type) {
+    public CategoryEn(String title, String[] subTitle, int type) {
         this.title = title;
         this.subTitle = subTitle;
         this.type = type;

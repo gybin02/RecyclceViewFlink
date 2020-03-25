@@ -88,12 +88,12 @@ public class MainActivity extends AppCompatActivity {
 
     public List<CategoryEn> getData() {
         List<CategoryEn> dataList = new ArrayList<>();
-        dataList.add(new CategoryEn("蔬菜豆类", "多种维生素矿物质", CategoryEn.TYPE_BIG));
-        dataList.add(new CategoryEn("肉禽蛋", "蛋白质", CategoryEn.TYPE_SMALL));
-        dataList.add(new CategoryEn("水果", "维生素 纤维物质", CategoryEn.TYPE_SMALL));
-        dataList.add(new CategoryEn("蔬菜豆类", "多种维生素矿物质", CategoryEn.TYPE_BIG));
-        dataList.add(new CategoryEn("蔬菜豆类", "多种维生素矿物质", CategoryEn.TYPE_SMALL));
-        dataList.add(new CategoryEn("蔬菜豆类", "多种维生素矿物质", CategoryEn.TYPE_SMALL));
+        dataList.add(new CategoryEn("蔬菜豆类", new String[]{"多种维生素矿物质", "蛋白质"}, CategoryEn.TYPE_BIG));
+        dataList.add(new CategoryEn("肉禽蛋", new String[]{"多种维生素矿物质", "蛋白质"}, CategoryEn.TYPE_SMALL));
+        dataList.add(new CategoryEn("水果", new String[]{"多种维生素矿物质", "蛋白质"}, CategoryEn.TYPE_SMALL));
+        dataList.add(new CategoryEn("蔬菜豆类", new String[]{"多种维生素矿物质", "蛋白质"}, CategoryEn.TYPE_BIG));
+        dataList.add(new CategoryEn("蔬菜豆类", new String[]{"多种维生素矿物质", "蛋白质"}, CategoryEn.TYPE_SMALL));
+        dataList.add(new CategoryEn("蔬菜豆类", new String[]{"多种维生素矿物质", "蛋白质"}, CategoryEn.TYPE_SMALL));
         return dataList;
     }
 

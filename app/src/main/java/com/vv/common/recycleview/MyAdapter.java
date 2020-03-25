@@ -51,10 +51,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.BigViewHolder> {
     public void onBindViewHolder(@NonNull BigViewHolder holder, int position) {
         CategoryEn categoryEn = dataList.get(position);
         holder.tv_title.setText(categoryEn.title);
-        holder.tv_subTitle.setText(categoryEn.subTitle);
+        if (categoryEn.isFLip) {
+            holder.tv_subTitle.setText(categoryEn.subTitle[1]);
+        } else {
+            holder.tv_subTitle.setText(categoryEn.subTitle[0]);
+        }
+
 //        holder.icon.setImageResource(categoryEn.icon);
         if (categoryEn.isFocus) {
-            startFlick(holder.tv_subTitle);
+            startFlick(holder.tv_subTitle, categoryEn);
         }
     }
 
@@ -62,15 +67,36 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.BigViewHolder> {
      * 开启View闪烁效果
      * 控件闪烁，其实就是控制控件的透明度，从可见到逐渐不可见，再逐渐到可见，一直反复。因此，要想实现控件闪烁，只需要使用android中的alpha动画即可
      */
-    private void startFlick(View view) {
+    private void startFlick(final TextView view, final CategoryEn categoryEn) {
         if (null == view) {
             return;
         }
-        Animation alphaAnimation = new AlphaAnimation(1, 0.4f);
+        Animation alphaAnimation = new AlphaAnimation(1, 0.0f);
         alphaAnimation.setDuration(300);
         alphaAnimation.setInterpolator(new LinearInterpolator());
-        alphaAnimation.setRepeatCount(2);
+        alphaAnimation.setRepeatCount(1);
         alphaAnimation.setRepeatMode(Animation.REVERSE);
+        alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                if (categoryEn.isFLip) {
+                    view.setText(categoryEn.subTitle[0]);
+                } else {
+                    view.setText(categoryEn.subTitle[1]);
+                }
+                categoryEn.isFLip = !categoryEn.isFLip;
+
+            }
+        });
         view.startAnimation(alphaAnimation);
     }
 
